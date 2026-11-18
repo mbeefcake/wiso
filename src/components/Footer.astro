@@ -1,0 +1,123 @@
+---
+import { COMPANY_INFO, RVS_KEERKLEP_PRODUCT, WISO_SERVICES } from '@/data/wisoData';
+---
+
+<footer class="border-t-4 border-[#99CC33] bg-[#0F171A] text-white">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
+      <!-- Bedrijfsprofiel -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            class="shrink-0"
+          >
+            <rect width="64" height="64" rx="8" fill="#162126" />
+            <circle cx="32" cy="32" r="22" stroke="#99CC33" stroke-width="4" />
+            <path
+              d="M32 14C41.94 14 50 22.06 50 32C50 38.8 46.2 44.7 40.6 47.7C43.6 44.3 45 39.3 44 34C42.6 26.6 35.6 22 28.4 23.4C23.2 24.4 19.4 28.9 19 34C18.6 24.1 24.8 14 32 14Z"
+              fill="#99CC33"
+            />
+            <circle cx="32" cy="34" r="4.5" fill="#FFFFFF" />
+          </svg>
+          <div>
+            <p class="font-heading text-lg font-extrabold tracking-tight text-white">WISO</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-[#99CC33]">
+              Allround ontstoppingsbedrijf
+            </p>
+          </div>
+        </div>
+
+        <p class="mt-4 text-sm leading-relaxed text-white/75">
+          {COMPANY_INFO.name} is al 25 jaar actief op het gebied van riool-ontstoppingen en
+          -reparaties voor particulieren en bedrijven in Twente, de Achterhoek en de Duitse
+          grensstreek.
+        </p>
+
+        <div class="mt-5 rounded border border-white/15 bg-[#162126] p-3.5 text-xs text-white/85">
+          <p class="font-bold text-[#99CC33]">Vaste prijsafspraak &amp; 5 jaar garantie</p>
+          <p class="mt-1 text-white/70">
+            Kosteloos en vrijblijvend advies vooraf. Geen vervelende bijkomende kosten achteraf.
+          </p>
+        </div>
+      </div>
+
+      <!-- Alle 9 Diensten -->
+      <div class="md:col-span-4">
+        <h2 class="font-heading text-xs font-bold uppercase tracking-wider text-[#99CC33]">
+          Specialistische diensten
+        </h2>
+        <ul class="mt-4 grid grid-cols-1 gap-2 text-sm text-white/80">
+          {WISO_SERVICES.map((service) => (
+            <li>
+              <a
+                href={`/diensten/${service.slug}`}
+                class="inline-flex items-center gap-2 transition-colors hover:text-[#99CC33]"
+              >
+                <span class="font-mono text-xs text-white/40">{service.number}</span>
+                <span>{service.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Product, Advies & Contact -->
+      <div class="md:col-span-4">
+        <h2 class="font-heading text-xs font-bold uppercase tracking-wider text-[#99CC33]">
+          Overig aanbod &amp; Contact
+        </h2>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>
+            <a href="/producten" class="font-semibold text-white transition-colors hover:text-[#99CC33]">
+              {RVS_KEERKLEP_PRODUCT.title} (Ø {RVS_KEERKLEP_PRODUCT.diameter})
+            </a>
+          </li>
+          <li>
+            <a href="/tips-en-advies" class="transition-colors hover:text-[#99CC33]">
+              Preventieve tips &amp; advies
+            </a>
+          </li>
+          <li>
+            <a href="/contact#werkgebied" class="transition-colors hover:text-[#99CC33]">
+              Werkgebied Twente &amp; Achterhoek
+            </a>
+          </li>
+        </ul>
+
+        <address class="mt-6 space-y-2 border-t border-white/15 pt-5 not-italic text-sm text-white/85">
+          <p class="font-bold text-white">{COMPANY_INFO.name}</p>
+          <p>
+            {COMPANY_INFO.street}<br />
+            {COMPANY_INFO.postalCode} {COMPANY_INFO.city}
+          </p>
+          <p class="pt-1">
+            Tel:{' '}
+            <a
+              href={COMPANY_INFO.phoneHref}
+              class="font-mono font-bold text-[#99CC33] hover:underline"
+            >
+              {COMPANY_INFO.phoneDisplay}
+            </a>
+          </p>
+          <p>
+            E-mail:{' '}
+            <a href={`mailto:${COMPANY_INFO.email}`} class="text-white hover:text-[#99CC33]">
+              {COMPANY_INFO.email}
+            </a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center">
+      <p>© {new Date().getFullYear()} {COMPANY_INFO.name} · Haaksbergen</p>
+      <p>Werkgebied: Overijssel (Twente), Gelderland (Achterhoek) &amp; Duitse grensstreek</p>
+    </div>
+  </div>
+</footer>

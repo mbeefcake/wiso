@@ -1,0 +1,612 @@
+---
+import { COMPANY_INFO, RVS_KEERKLEP_PRODUCT, WISO_SERVICES } from '@/data/wisoData';
+
+interface Props {
+  selectedService?: string;
+  heading?: string;
+  subheading?: string;
+  idPrefix?: string;
+}
+
+const {
+  selectedService = 'rioolreiniging',
+  heading = 'Direct een dienst aanvragen of prijsopgave opvragen',
+  subheading = 'Alle adviezen en aanbiedingen zijn geheel kosteloos en vrijblijvend. Velden met * zijn verplicht.',
+  idPrefix = 'wiso-booking',
+} = Astro.props;
+
+const serviceOptions = [
+  ...WISO_SERVICES.map((s) => ({ id: s.id, label: `${s.number} — ${s.title}` })),
+  {
+    id: RVS_KEERKLEP_PRODUCT.id,
+    label: `Product — ${RVS_KEERKLEP_PRODUCT.title} (Ø ${RVS_KEERKLEP_PRODUCT.diameter})`,
+  },
+];
+
+const formTitleId = `${idPrefix}-title`;
+const serviceId = `${idPrefix}-service`;
+const serviceErrId = `${idPrefix}-service-err`;
+const nameId = `${idPrefix}-fullname`;
+const nameErrId = `${idPrefix}-fullname-err`;
+const phoneId = `${idPrefix}-phone`;
+const phoneErrId = `${idPrefix}-phone-err`;
+const emailId = `${idPrefix}-email`;
+const emailHintId = `${idPrefix}-email-hint`;
+const emailErrId = `${idPrefix}-email-err`;
+const addressId = `${idPrefix}-address`;
+const addressHintId = `${idPrefix}-address-hint`;
+const addressErrId = `${idPrefix}-address-err`;
+const notesId = `${idPrefix}-notes`;
+---
+
+<div
+  class="wiso-booking-wrapper rounded border border-[#DCE2DE] bg-white p-6 shadow-sm sm:p-8"
+  data-default-service={selectedService}
+  data-email={COMPANY_INFO.email}
+  data-phone={COMPANY_INFO.phoneDisplay}
+  data-phone-href={COMPANY_INFO.phoneHref}
+>
+  <div class="wiso-announcer visually-hidden" aria-live="polite"></div>
+
+  <form
+    method="POST"
+    action={`mailto:${COMPANY_INFO.email}`}
+    aria-labelledby={formTitleId}
+    class="wiso-booking-form space-y-6"
+  >
+    <div class="border-b border-[#DCE2DE] pb-4">
+      <h2 id={formTitleId} class="font-heading text-xl font-bold text-[#0F171A] sm:text-2xl">
+        {heading}
+      </h2>
+      <p class="mt-1 text-sm text-[#4B575C]">{subheading}</p>
+    </div>
+
+    <!-- Dienst selectie (10 opties -> <select>) -->
+    <div>
+      <label for={serviceId} class="block text-sm font-semibold text-[#172024]">
+        Gewenste dienst of product <span aria-hidden="true">*</span>
+      </label>
+      <select
+        id={serviceId}
+        name="service"
+        required
+        data-error={serviceErrId}
+        class="wiso-input mt-1.5 min-h-[48px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      >
+        {
+          serviceOptions.map((opt) => (
+            <option value={opt.id} selected={opt.id === selectedService}>
+              {opt.label}
+            </option>
+          ))
+        }
+      </select>
+      <div id={serviceErrId} class="error-msg">
+        <span role="img" aria-label="Fout">❌</span>
+        <span>Kies de gewenste dienst of het product uit de lijst.</span>
+      </div>
+    </div>
+
+    <!-- Zichtbare radio-keuzes in <fieldset> + <legend> -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <fieldset class="rounded border border-[#DCE2DE] bg-[#F6F7F5] p-4">
+        <legend class="px-1 text-sm font-semibold text-[#172024]">Type opdrachtgever</legend>
+        <div class="mt-2 flex flex-wrap gap-5">
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id={`${idPrefix}-type-particulier`}
+              name="customer_type"
+              value="Particulier"
+              checked
+              class="h-5 w-5 accent-[#2E5A12]"
+            />
+            <label for={`${idPrefix}-type-particulier`} class="cursor-pointer text-sm font-medium text-[#172024]">
+              Particulier
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id={`${idPrefix}-type-zakelijk`}
+              name="customer_type"
+              value="Zakelijk"
+              class="h-5 w-5 accent-[#2E5A12]"
+            />
+            <label for={`${idPrefix}-type-zakelijk`} class="cursor-pointer text-sm font-medium text-[#172024]">
+              Zakelijk
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="rounded border border-[#DCE2DE] bg-[#F6F7F5] p-4">
+        <legend class="px-1 text-sm font-semibold text-[#172024]">Gewenste planning</legend>
+        <div class="mt-2 flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id={`${idPrefix}-urg-spoed`}
+              name="urgency"
+              value="Spoed (zo snel mogelijk)"
+              checked
+              class="h-5 w-5 accent-[#2E5A12]"
+            />
+            <label for={`${idPrefix}-urg-spoed`} class="cursor-pointer text-sm font-medium text-[#172024]">
+              Spoed (zo snel mogelijk)
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id={`${idPrefix}-urg-regulier`}
+              name="urgency"
+              value="Binnen enkele dagen"
+              class="h-5 w-5 accent-[#2E5A12]"
+            />
+            <label for={`${idPrefix}-urg-regulier`} class="cursor-pointer text-sm font-medium text-[#172024]">
+              Binnen enkele dagen
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id={`${idPrefix}-urg-offerte`}
+              name="urgency"
+              value="Vrijblijvende prijsopgave / advies"
+              class="h-5 w-5 accent-[#2E5A12]"
+            />
+            <label for={`${idPrefix}-urg-offerte`} class="cursor-pointer text-sm font-medium text-[#172024]">
+              Vrijblijvende prijsopgave
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Naam & Telefoon -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div>
+        <label for={nameId} class="block text-sm font-semibold text-[#172024]">
+          Naam <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id={nameId}
+          name="fullname"
+          autocomplete="name"
+          enterkeyhint="next"
+          required
+          data-error={nameErrId}
+          class="wiso-input mt-1.5 min-h-[48px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+        />
+        <div id={nameErrId} class="error-msg">
+          <span role="img" aria-label="Fout">❌</span>
+          <span>Vul uw volledige naam in.</span>
+        </div>
+      </div>
+
+      <div>
+        <label for={phoneId} class="block text-sm font-semibold text-[#172024]">
+          Telefoonnummer <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="tel"
+          id={phoneId}
+          name="phone"
+          autocomplete="tel"
+          enterkeyhint="next"
+          required
+          data-error={phoneErrId}
+          class="wiso-input mt-1.5 min-h-[48px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+        />
+        <div id={phoneErrId} class="error-msg">
+          <span role="img" aria-label="Fout">❌</span>
+          <span>Vul een geldig telefoonnummer in waarop wij u kunnen bereiken.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- E-mailadres (format hint boven veld) -->
+    <div>
+      <label for={emailId} class="block text-sm font-semibold text-[#172024]">
+        E-mailadres <span aria-hidden="true">*</span>
+      </label>
+      <span id={emailHintId} class="mt-0.5 block text-xs text-[#4B575C]">
+        Formaat: naam@voorbeeld.nl
+      </span>
+      <input
+        type="email"
+        id={emailId}
+        name="email"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        enterkeyhint="next"
+        required
+        aria-describedby={emailHintId}
+        data-error={emailErrId}
+        class="wiso-input mt-1.5 min-h-[48px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      />
+      <div id={emailErrId} class="error-msg">
+        <span role="img" aria-label="Fout">❌</span>
+        <span>Vul een geldig e-mailadres in, zoals naam@voorbeeld.nl.</span>
+      </div>
+    </div>
+
+    <!-- Adres en woonplaats als flexibele textarea -->
+    <div>
+      <label for={addressId} class="block text-sm font-semibold text-[#172024]">
+        Adres en woonplaats <span aria-hidden="true">*</span>
+      </label>
+      <span id={addressHintId} class="mt-0.5 block text-xs text-[#4B575C]">
+        Straat, huisnummer en plaatsnaam in Twente, Achterhoek of grensstreek.
+      </span>
+      <textarea
+        id={addressId}
+        name="address"
+        rows={2}
+        autocomplete="street-address"
+        required
+        aria-describedby={addressHintId}
+        data-error={addressErrId}
+        class="wiso-input mt-1.5 min-h-[76px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      ></textarea>
+      <div id={addressErrId} class="error-msg">
+        <span role="img" aria-label="Fout">❌</span>
+        <span>Vul het adres en de plaatsnaam van de locatie in.</span>
+      </div>
+    </div>
+
+    <!-- Omschrijving -->
+    <div>
+      <label for={notesId} class="block text-sm font-semibold text-[#172024]">
+        Omschrijving van de situatie (optioneel)
+      </label>
+      <textarea
+        id={notesId}
+        name="notes"
+        rows={3}
+        placeholder="Bijv. verstopping keukenafvoer, rioolstank in toilet of vrijblijvende prijsopgave rioolvervanging..."
+        class="mt-1.5 min-h-[90px] w-full rounded border border-[#767676] bg-white px-3.5 py-2.5 text-base text-[#172024] placeholder:text-[#4B575C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      ></textarea>
+    </div>
+
+    <div class="flex flex-col gap-3 border-t border-[#DCE2DE] pt-5 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-xs text-[#4B575C]">
+        Vaste prijsafspraak vooraf · Geen verrassingen achteraf
+      </p>
+      <button
+        type="submit"
+        class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded bg-[#99CC33] px-6 py-3 text-base font-bold text-[#0F171A] shadow-sm transition-colors hover:bg-[#86B628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F171A]"
+      >
+        <span>Aanvraag voorbereiden &amp; versturen</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Bevestigingspaneel na geldige submit -->
+  <div class="wiso-booking-confirmation hidden space-y-5" role="status">
+    <div class="border-l-4 border-[#99CC33] bg-[#F1F7E4] p-4">
+      <p class="font-heading text-lg font-bold text-[#0F171A]">
+        Uw aanvraag staat klaar voor Wiso Allround ontstoppingsbedrijf
+      </p>
+      <p class="mt-1 text-sm text-[#172024]">
+        Controleer uw samenvatting en verstuur deze direct per e-mail naar{' '}
+        <strong>{COMPANY_INFO.email}</strong>, of bel direct met{' '}
+        <strong class="font-mono">{COMPANY_INFO.phoneDisplay}</strong>.
+      </p>
+    </div>
+
+    <dl class="wiso-summary-list grid grid-cols-1 gap-3 rounded border border-[#DCE2DE] bg-[#F6F7F5] p-4 text-sm sm:grid-cols-2"></dl>
+
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <a
+        href={`mailto:${COMPANY_INFO.email}`}
+        class="wiso-mailto-btn inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded bg-[#99CC33] px-5 py-3 text-base font-bold text-[#0F171A] transition-colors hover:bg-[#86B628]"
+      >
+        <span>Verstuur e-mail naar {COMPANY_INFO.email}</span>
+      </a>
+      <a
+        href={COMPANY_INFO.phoneHref}
+        class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded bg-[#0F171A] px-5 py-3 font-mono text-base font-bold text-white transition-colors hover:bg-[#1E2629]"
+      >
+        <span>Bel {COMPANY_INFO.phoneDisplay}</span>
+      </a>
+    </div>
+
+    <button
+      type="button"
+      class="wiso-reset-btn text-sm font-semibold text-[#2E5A12] underline underline-offset-4 hover:text-[#0F171A]"
+    >
+      ← Gegevens aanpassen
+    </button>
+  </div>
+</div>
+
+<script>
+  const spokenText = (node: HTMLElement): string => {
+    const copy = node.cloneNode(true) as HTMLElement;
+    copy.querySelectorAll('[aria-hidden="true"]').forEach((n) => n.remove());
+    copy.querySelectorAll('[role="img"][aria-label]').forEach((n) => {
+      n.replaceWith(`${n.getAttribute('aria-label')}: `);
+    });
+    return (copy.textContent || '').replace(/\s+/g, ' ').trim();
+  };
+
+  function initWisoBookingForms() {
+    const wrappers = document.querySelectorAll<HTMLElement>('.wiso-booking-wrapper');
+
+    wrappers.forEach((wrapper) => {
+      if (wrapper.dataset.initialized === 'true') return;
+      wrapper.dataset.initialized = 'true';
+
+      const form = wrapper.querySelector<HTMLFormElement>('.wiso-booking-form');
+      const confirmation = wrapper.querySelector<HTMLElement>('.wiso-booking-confirmation');
+      const summaryDl = wrapper.querySelector<HTMLElement>('.wiso-summary-list');
+      const mailtoBtn = wrapper.querySelector<HTMLAnchorElement>('.wiso-mailto-btn');
+      const resetBtn = wrapper.querySelector<HTMLButtonElement>('.wiso-reset-btn');
+      const announcer = wrapper.querySelector<HTMLElement>('.wiso-announcer');
+
+      if (!form || !confirmation || !summaryDl || !mailtoBtn || !resetBtn || !announcer) return;
+
+      // URL query parameters ondersteuning (?dienst=stankdetectie&plaats=Enschede)
+      const params = new URLSearchParams(window.location.search);
+      const qService = params.get('dienst');
+      const qCity = params.get('plaats');
+
+      const serviceSelect = form.querySelector<HTMLSelectElement>('select[name="service"]');
+      const addressField = form.querySelector<HTMLTextAreaElement>('textarea[name="address"]');
+
+      if (qService && serviceSelect) {
+        const optionExists = Array.from(serviceSelect.options).some((o) => o.value === qService);
+        if (optionExists) serviceSelect.value = qService;
+      }
+      if (qCity && addressField && !addressField.value.trim()) {
+        addressField.value = qCity;
+      }
+
+      // Custom event listeners vanaf diagnosetool of plaats-checker op dezelfde pagina
+      window.addEventListener('wiso:select-service', ((ev: CustomEvent<{ serviceId: string }>) => {
+        if (serviceSelect && ev.detail?.serviceId) {
+          serviceSelect.value = ev.detail.serviceId;
+        }
+      }) as EventListener);
+
+      window.addEventListener('wiso:select-city', ((ev: CustomEvent<{ city: string }>) => {
+        if (addressField && ev.detail?.city) {
+          addressField.value = ev.detail.city;
+        }
+      }) as EventListener);
+
+      const dirtyState = new WeakMap<HTMLElement, { hasInteracted: boolean; hasBlurred: boolean }>();
+      const flagged = new WeakSet<HTMLElement>();
+      const announced = new WeakSet<HTMLElement>();
+      let announceTimer: number | undefined;
+      let announcedField: HTMLElement | null = null;
+
+      const supportsUserInvalid =
+        typeof CSS !== 'undefined' &&
+        typeof CSS.supports === 'function' &&
+        CSS.supports('selector(:user-invalid)');
+
+      const linkError = (el: HTMLElement, shown: boolean) => {
+        const errorId = el.dataset.error;
+        if (!errorId) return;
+        const ids = (el.getAttribute('aria-describedby') || '')
+          .split(/\s+/)
+          .filter((id) => id && id !== errorId);
+        if (shown) ids.push(errorId);
+        if (ids.length) el.setAttribute('aria-describedby', ids.join(' '));
+        else el.removeAttribute('aria-describedby');
+      };
+
+      const announceError = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) => {
+        const errorId = el.dataset.error;
+        if (!errorId) return;
+        const errorEl = document.getElementById(errorId);
+        if (!errorEl) return;
+        const label = el.labels?.[0] ? `${spokenText(el.labels[0])}: ` : '';
+        window.clearTimeout(announceTimer);
+        announcer.textContent = '';
+        announcedField = el;
+        announceTimer = window.setTimeout(() => {
+          announcer.textContent = label + spokenText(errorEl);
+        }, 500);
+      };
+
+      const syncAria = (el: EventTarget | null, announce = false) => {
+        if (
+          !(el instanceof HTMLInputElement) &&
+          !(el instanceof HTMLSelectElement) &&
+          !(el instanceof HTMLTextAreaElement)
+        ) {
+          return;
+        }
+        const invalid = supportsUserInvalid
+          ? el.matches(':user-invalid')
+          : el.classList.contains('user-invalid-fallback');
+
+        if (invalid) {
+          if (announce && !announced.has(el)) {
+            announceError(el);
+            announced.add(el);
+          }
+          el.setAttribute('aria-invalid', 'true');
+          linkError(el, true);
+          flagged.add(el);
+        } else if (flagged.has(el) || el.getAttribute('aria-invalid') !== 'true') {
+          el.setAttribute('aria-invalid', 'false');
+          linkError(el, false);
+          flagged.delete(el);
+          announced.delete(el);
+          if (announcedField === el) {
+            window.clearTimeout(announceTimer);
+            announcer.textContent = '';
+          }
+        }
+      };
+
+      const updateFallbackState = (
+        input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
+      ) => {
+        const isValid = input.validity.valid;
+        input.classList.toggle('user-invalid-fallback', !isValid);
+        input.classList.toggle('user-valid-fallback', isValid);
+      };
+
+      form.querySelectorAll('input, select, textarea').forEach((el) => {
+        if (!el.hasAttribute('aria-invalid')) el.setAttribute('aria-invalid', 'false');
+      });
+
+      form.addEventListener(
+        'blur',
+        (e) => {
+          const t = e.target;
+          if (
+            t instanceof HTMLInputElement ||
+            t instanceof HTMLSelectElement ||
+            t instanceof HTMLTextAreaElement
+          ) {
+            if (!supportsUserInvalid) {
+              const st = dirtyState.get(t) || { hasInteracted: false, hasBlurred: false };
+              st.hasBlurred = true;
+              dirtyState.set(t, st);
+              if (st.hasInteracted) updateFallbackState(t);
+            }
+            syncAria(t, true);
+          }
+        },
+        true,
+      );
+
+      form.addEventListener('input', (e) => {
+        const t = e.target;
+        if (
+          t instanceof HTMLInputElement ||
+          t instanceof HTMLSelectElement ||
+          t instanceof HTMLTextAreaElement
+        ) {
+          if (!supportsUserInvalid) {
+            const st = dirtyState.get(t) || { hasInteracted: false, hasBlurred: false };
+            st.hasInteracted = true;
+            dirtyState.set(t, st);
+            if (st.hasBlurred) updateFallbackState(t);
+          }
+          if (t.hasAttribute('aria-invalid')) syncAria(t, false);
+        }
+      });
+
+      form.addEventListener(
+        'change',
+        (e) => {
+          const t = e.target;
+          if (
+            t instanceof HTMLInputElement ||
+            t instanceof HTMLSelectElement ||
+            t instanceof HTMLTextAreaElement
+          ) {
+            if (!supportsUserInvalid) {
+              const st = dirtyState.get(t) || { hasInteracted: false, hasBlurred: false };
+              st.hasInteracted = true;
+              st.hasBlurred = true;
+              dirtyState.set(t, st);
+              updateFallbackState(t);
+            }
+            syncAria(t, true);
+          }
+        },
+        true,
+      );
+
+      form.addEventListener(
+        'invalid',
+        (e) => {
+          const t = e.target;
+          if (
+            t instanceof HTMLInputElement ||
+            t instanceof HTMLSelectElement ||
+            t instanceof HTMLTextAreaElement
+          ) {
+            if (!supportsUserInvalid) {
+              dirtyState.set(t, { hasInteracted: true, hasBlurred: true });
+              updateFallbackState(t);
+            }
+            announced.add(t);
+            syncAria(t, false);
+          }
+        },
+        true,
+      );
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          const firstInvalid = form.querySelector<HTMLElement>(':invalid');
+          firstInvalid?.focus();
+          return;
+        }
+
+        const data = new FormData(form);
+        const selectedOption = serviceSelect?.options[serviceSelect.selectedIndex]?.text || '';
+        const customerType = String(data.get('customer_type') || 'Particulier');
+        const urgency = String(data.get('urgency') || 'Spoed');
+        const fullname = String(data.get('fullname') || '').trim();
+        const phone = String(data.get('phone') || '').trim();
+        const email = String(data.get('email') || '').trim();
+        const address = String(data.get('address') || '').trim();
+        const notes = String(data.get('notes') || '').trim();
+
+        const rows = [
+          ['Dienst / Product', selectedOption],
+          ['Planning & Klant', `${urgency} (${customerType})`],
+          ['Naam & Telefoon', `${fullname} · ${phone}`],
+          ['E-mail & Adres', `${email} · ${address}`],
+        ];
+        if (notes) rows.push(['Toelichting', notes]);
+
+        summaryDl.replaceChildren(
+          ...rows.map(([k, v]) => {
+            const div = document.createElement('div');
+            const dt = document.createElement('dt');
+            dt.className = 'text-xs font-semibold uppercase tracking-wider text-[#4B575C]';
+            dt.textContent = k;
+            const dd = document.createElement('dd');
+            dd.className = 'mt-0.5 font-semibold text-[#0F171A]';
+            dd.textContent = v;
+            div.append(dt, dd);
+            return div;
+          }),
+        );
+
+        const targetEmail = wrapper.dataset.email || 'robert@hubertmail.nl';
+        const subject = encodeURIComponent(`Aanvraag ${selectedOption} — ${fullname}`);
+        const body = encodeURIComponent(
+          `Beste Wiso,\n\nHierbij mijn aanvraag via de website:\n\n` +
+            `Dienst / Product: ${selectedOption}\n` +
+            `Type opdrachtgever: ${customerType}\n` +
+            `Planning: ${urgency}\n` +
+            `Naam: ${fullname}\n` +
+            `Telefoon: ${phone}\n` +
+            `E-mail: ${email}\n` +
+            `Adres / Plaats: ${address}\n` +
+            `Toelichting: ${notes || '-'}\n`,
+        );
+        mailtoBtn.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+
+        form.classList.add('hidden');
+        confirmation.classList.remove('hidden');
+      });
+
+      resetBtn.addEventListener('click', () => {
+        confirmation.classList.add('hidden');
+        form.classList.remove('hidden');
+      });
+    });
+  }
+
+  initWisoBookingForms();
+  document.addEventListener('astro:page-load', initWisoBookingForms);
+</script>

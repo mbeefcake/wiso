@@ -1,0 +1,491 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BookingForm from '@/components/BookingForm.astro';
+import ServiceAreaLookup from '@/components/ServiceAreaLookup.astro';
+import {
+  COMPANY_INFO,
+  DIAGNOSTIC_PROBLEMS,
+  GRES_VS_PVC,
+  PREVENTION_TIPS,
+  RVS_KEERKLEP_PRODUCT,
+  WISO_SERVICES,
+} from '@/data/wisoData';
+
+const initialDiagnostic = DIAGNOSTIC_PROBLEMS[0];
+---
+
+<BaseLayout
+  title="Wiso Allround Ontstoppingsbedrijf | Rioolservice Twente & Achterhoek"
+  description="Al 25 jaar actief in riool-ontstoppingen, rioolreparaties en inspecties in Haaksbergen, Enschede, Twente en de Achterhoek. Vaste prijsafspraak vooraf en 5 jaar garantie."
+>
+  <!-- Hero Sectie: Zakelijk, Gezaghebbend & Direct Actiegericht -->
+  <section class="border-b border-[#DCE2DE] bg-gradient-to-b from-[#F6F7F5] to-white py-12 sm:py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+        <!-- Linkerkolom: Propositie & Kerncijfers -->
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 rounded border border-[#2E5A12]/25 bg-[#F1F7E4] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+            <span class="inline-block h-2 w-2 bg-[#99CC33]" aria-hidden="true"></span>
+            <span>Allround ontstoppingsbedrijf · Haaksbergen</span>
+          </div>
+
+          <h1 class="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A] sm:text-5xl sm:leading-[1.1]">
+            Vakkundige rioolservice zonder verrassingen achteraf.
+          </h1>
+
+          <p class="mt-5 text-base leading-relaxed text-[#4B575C] sm:text-lg">
+            {COMPANY_INFO.introText}
+          </p>
+
+          <ul class="wiso-square-list mt-6 grid grid-cols-1 gap-2.5 text-sm font-semibold text-[#172024] sm:grid-cols-2">
+            <li>Vaste prijsafspraak vooraf</li>
+            <li>5 jaar garantie op reparaties</li>
+            <li>Kosteloos en vrijblijvend advies</li>
+            <li>Particulieren én bedrijven</li>
+          </ul>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={COMPANY_INFO.phoneHref}
+              class="inline-flex min-h-[48px] items-center gap-2.5 rounded bg-[#99CC33] px-6 py-3 text-base font-bold text-[#0F171A] shadow-sm transition-colors hover:bg-[#86B628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F171A]"
+            >
+              <span>Bel direct: {COMPANY_INFO.phoneDisplay}</span>
+            </a>
+            <a
+              href="#aanvragen"
+              class="inline-flex min-h-[48px] items-center gap-2 rounded border border-[#0F171A] bg-white px-5 py-3 text-base font-bold text-[#0F171A] transition-colors hover:bg-[#0F171A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+            >
+              <span>Offerte of afspraak aanvragen</span>
+            </a>
+          </div>
+
+          <!-- Technische kengetallen balk -->
+          <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded border border-[#DCE2DE] bg-[#DCE2DE] sm:grid-cols-4">
+            <div class="bg-white p-4">
+              <dt class="text-xs font-medium text-[#4B575C]">Ervaring</dt>
+              <dd class="mt-1 font-mono text-xl font-bold text-[#0F171A]">25+ jaar</dd>
+            </div>
+            <div class="bg-white p-4">
+              <dt class="text-xs font-medium text-[#4B575C]">Buisdiameters</dt>
+              <dd class="mt-1 font-mono text-xl font-bold text-[#0F171A]">32–250 mm</dd>
+            </div>
+            <div class="bg-white p-4">
+              <dt class="text-xs font-medium text-[#4B575C]">Hogedruk bereik</dt>
+              <dd class="mt-1 font-mono text-xl font-bold text-[#0F171A]">ca. 100 m</dd>
+            </div>
+            <div class="bg-white p-4">
+              <dt class="text-xs font-medium text-[#4B575C]">Reparatiegarantie</dt>
+              <dd class="mt-1 font-mono text-xl font-bold text-[#2E5A12]">5 jaar</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Rechterkolom: Directe Diagnose & Dienstwijzer + Originele Servicewagen -->
+        <div class="lg:col-span-6">
+          <div class="rounded border border-[#DCE2DE] bg-white shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DCE2DE] bg-[#0F171A] px-6 py-4 text-white">
+              <div>
+                <p class="font-mono text-xs font-bold uppercase tracking-wider text-[#99CC33]">
+                  Directe diagnose &amp; dienstwijzer
+                </p>
+                <h2 class="mt-0.5 font-heading text-lg font-bold">
+                  Selecteer uw probleem voor de juiste aanpak
+                </h2>
+              </div>
+              <div class="hidden overflow-hidden rounded border border-white/20 sm:block">
+                <img
+                  src="https://www.wiso.nl/images/busje.jpg"
+                  alt="Servicewagen van Wiso Allround ontstoppingsbedrijf"
+                  width="200"
+                  height="132"
+                  class="h-12 w-20 object-cover"
+                />
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div
+                role="radiogroup"
+                aria-label="Kies uw rioolprobleem"
+                class="grid grid-cols-1 gap-2 sm:grid-cols-2"
+              >
+                {
+                  DIAGNOSTIC_PROBLEMS.map((item, idx) => (
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={idx === 0 ? 'true' : 'false'}
+                      data-problem-id={item.id}
+                      data-title={item.recommendedTitle}
+                      data-href={item.recommendedHref}
+                      data-service-id={item.serviceId}
+                      data-summary={item.actionSummary}
+                      data-specs={item.specs}
+                      class:list={[
+                        'wiso-diag-btn flex flex-col items-start rounded border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]',
+                        idx === 0
+                          ? 'border-[#2E5A12] bg-[#F1F7E4]'
+                          : 'border-[#DCE2DE] bg-[#F6F7F5] hover:border-[#2E5A12]/60 hover:bg-white',
+                      ]}
+                    >
+                      <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2E5A12]">
+                        {item.urgencyLabel}
+                      </span>
+                      <span class="mt-0.5 text-sm font-semibold text-[#0F171A]">
+                        {item.symptom}
+                      </span>
+                    </button>
+                  ))
+                }
+              </div>
+
+              <!-- Aanbevolen oplossing -->
+              <div class="mt-5 rounded border border-[#DCE2DE] bg-[#F6F7F5] p-5">
+                <p class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+                  Aanbevolen oplossing
+                </p>
+                <h3 id="diag-title" class="mt-1 font-heading text-lg font-bold text-[#0F171A]">
+                  {initialDiagnostic.recommendedTitle}
+                </h3>
+                <p id="diag-summary" class="mt-2 text-sm leading-relaxed text-[#4B575C]">
+                  {initialDiagnostic.actionSummary}
+                </p>
+                <p id="diag-specs" class="mt-2.5 font-mono text-xs font-bold text-[#172024]">
+                  {initialDiagnostic.specs}
+                </p>
+
+                <div class="mt-4 flex flex-col gap-2.5 sm:flex-row">
+                  <button
+                    type="button"
+                    id="diag-book-btn"
+                    data-service-id={initialDiagnostic.serviceId}
+                    class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded bg-[#99CC33] px-4 py-2.5 text-sm font-bold text-[#0F171A] transition-colors hover:bg-[#86B628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F171A]"
+                  >
+                    Direct deze dienst aanvragen ↓
+                  </button>
+                  <a
+                    id="diag-detail-link"
+                    href={initialDiagnostic.recommendedHref}
+                    class="inline-flex min-h-[44px] items-center justify-center rounded border border-[#DCE2DE] bg-white px-4 py-2.5 text-sm font-semibold text-[#0F171A] transition-colors hover:border-[#2E5A12] hover:text-[#2E5A12]"
+                  >
+                    Lees meer →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alle 9 Diensten: Strak 3x3 Vakmanschaps-grid met scherpe native thumbnailkadering -->
+  <section id="diensten" class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-between gap-4 border-b border-[#DCE2DE] pb-6 md:flex-row md:items-end">
+        <div>
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+            Onze 9 specialismen
+          </span>
+          <h2 class="mt-2 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A] sm:text-4xl">
+            Compleet dienstenoverzicht
+          </h2>
+          <p class="mt-2 max-w-2xl text-base text-[#4B575C]">
+            Elke dienst heeft een eigen detailpagina met technische specificaties, werkwijze en
+            directe aanvraagmogelijkheid.
+          </p>
+        </div>
+        <a
+          href="/diensten"
+          class="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold text-[#2E5A12] hover:text-[#0F171A]"
+        >
+          <span>Bekijk materieel &amp; overzichtspagina</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          WISO_SERVICES.map((service) => (
+            <article class="flex flex-col justify-between rounded border border-[#DCE2DE] bg-white p-6 transition-colors hover:border-[#2E5A12]/60 hover:bg-[#F6F7F5]/40">
+              <div>
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <span class="font-mono text-xs font-bold text-[#2E5A12]">
+                      {service.number} / {service.categoryLabel}
+                    </span>
+                    <h3 class="mt-1.5 font-heading text-xl font-bold text-[#0F171A]">
+                      <a
+                        href={`/diensten/${service.slug}`}
+                        class="hover:text-[#2E5A12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+                      >
+                        {service.title}
+                      </a>
+                    </h3>
+                  </div>
+                  {service.images[0] ? (
+                    <div class="h-16 w-20 shrink-0 overflow-hidden rounded border border-[#DCE2DE] bg-[#F6F7F5]">
+                      <img
+                        src={service.images[0].url}
+                        alt={service.images[0].alt}
+                        width={service.images[0].width}
+                        height={service.images[0].height}
+                        loading="lazy"
+                        class="h-full w-full object-cover"
+                      />
+                    </div>
+                  ) : null}
+                </div>
+
+                <p class="mt-3 text-sm leading-relaxed text-[#4B575C]">{service.summary}</p>
+
+                <dl class="mt-4 space-y-1.5 border-t border-[#DCE2DE] pt-3 text-xs">
+                  {service.specs.slice(0, 2).map((spec) => (
+                    <div class="flex items-center justify-between gap-2">
+                      <dt class="text-[#4B575C]">{spec.label}</dt>
+                      <dd class="font-mono font-semibold text-[#0F171A]">{spec.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <div class="mt-5 flex items-center justify-between gap-3 border-t border-[#DCE2DE] pt-4">
+                <a
+                  href={`/diensten/${service.slug}`}
+                  class="text-sm font-bold text-[#0F171A] hover:text-[#2E5A12]"
+                >
+                  Bekijk werkwijze →
+                </a>
+                <a
+                  href={`/?dienst=${service.id}#aanvragen`}
+                  data-quick-service={service.id}
+                  class="wiso-quick-service-link rounded bg-[#F1F7E4] px-3 py-1.5 text-xs font-bold text-[#2E5A12] transition-colors hover:bg-[#99CC33] hover:text-[#0F171A]"
+                >
+                  Aanvragen
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Kwaliteit, Vaste Prijs & Gres vs PVC Vergelijking -->
+  <section class="border-t border-[#DCE2DE] bg-[#F6F7F5] py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-5">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+            Transparantie &amp; Zekerheid
+          </span>
+          <h2 class="mt-2 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A]">
+            Vaste prijsafspraak, 5 jaar garantie
+          </h2>
+          <p class="mt-3 text-base leading-relaxed text-[#4B575C]">
+            Bij ons geen vervelende bijkomende kosten achteraf. Alle werkzaamheden worden
+            uitgevoerd voor een vaste, van tevoren afgesproken prijs. Uiteraard zijn al onze
+            adviezen en aanbiedingen geheel kosteloos en vrijblijvend. Op alle door ons
+            uitgevoerde reparaties en nieuw aangelegde systemen geven wij <strong>5 jaar garantie</strong>.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/diensten/rioolreparatie-en-aanleg"
+              class="inline-flex items-center gap-2 rounded border border-[#0F171A] bg-white px-4 py-2.5 text-sm font-bold text-[#0F171A] transition-colors hover:bg-[#0F171A] hover:text-white"
+            >
+              <span>Alles over rioolreparatie &amp; aanleg →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
+          <!-- Oude Gres -->
+          <div class="rounded border border-[#DCE2DE] bg-white p-6">
+            <div class="flex items-center gap-4">
+              <img
+                src={GRES_VS_PVC.gresImage.url}
+                alt={GRES_VS_PVC.gresImage.alt}
+                width={GRES_VS_PVC.gresImage.width}
+                height={GRES_VS_PVC.gresImage.height}
+                loading="lazy"
+                class="h-24 w-32 shrink-0 rounded border border-[#DCE2DE] object-cover"
+              />
+              <div>
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-red-700">
+                  Risico op defecten
+                </span>
+                <h3 class="mt-1 font-heading text-base font-bold text-[#0F171A]">
+                  {GRES_VS_PVC.gresTitle}
+                </h3>
+              </div>
+            </div>
+            <ul class="mt-4 space-y-2 border-t border-[#DCE2DE] pt-4 text-sm text-[#4B575C]">
+              {GRES_VS_PVC.gresPoints.map((pt) => (
+                <li class="flex items-start gap-2">
+                  <span class="font-bold text-red-700" aria-hidden="true">✕</span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Moderne PVC -->
+          <div class="rounded border border-[#2E5A12]/40 bg-white p-6">
+            <div class="flex items-center gap-4">
+              <img
+                src={GRES_VS_PVC.pvcImage.url}
+                alt={GRES_VS_PVC.pvcImage.alt}
+                width={GRES_VS_PVC.pvcImage.width}
+                height={GRES_VS_PVC.pvcImage.height}
+                loading="lazy"
+                class="h-24 w-32 shrink-0 rounded border border-[#DCE2DE] object-cover"
+              />
+              <div>
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2E5A12]">
+                  Duurzame vervanging
+                </span>
+                <h3 class="mt-1 font-heading text-base font-bold text-[#0F171A]">
+                  {GRES_VS_PVC.pvcTitle}
+                </h3>
+              </div>
+            </div>
+            <ul class="wiso-square-list mt-4 space-y-2 border-t border-[#DCE2DE] pt-4 text-sm font-medium text-[#172024]">
+              {GRES_VS_PVC.pvcPoints.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Spotlight: RVS Keerklep + Tips Samenvatting -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <!-- RVS Keerklep -->
+        <div class="rounded border border-[#DCE2DE] bg-[#0F171A] p-6 text-white sm:p-8 lg:col-span-7">
+          <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+            <div class="shrink-0 overflow-hidden rounded border border-white/20 bg-white p-2">
+              <img
+                src={RVS_KEERKLEP_PRODUCT.gallery[0].url}
+                alt={RVS_KEERKLEP_PRODUCT.gallery[0].alt}
+                width={RVS_KEERKLEP_PRODUCT.gallery[0].width}
+                height={RVS_KEERKLEP_PRODUCT.gallery[0].height}
+                loading="lazy"
+                class="h-36 w-36 object-contain"
+              />
+            </div>
+            <div>
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#99CC33]">
+                Product · Diam. {RVS_KEERKLEP_PRODUCT.diameter} · Prijs: {RVS_KEERKLEP_PRODUCT.price}
+              </span>
+              <h2 class="mt-2 font-heading text-2xl font-extrabold text-white">
+                {RVS_KEERKLEP_PRODUCT.title} tegen ratten
+              </h2>
+              <p class="mt-2 text-sm leading-relaxed text-white/80">
+                {RVS_KEERKLEP_PRODUCT.description}
+              </p>
+              <div class="mt-5 flex flex-wrap gap-3">
+                <a
+                  href="/producten"
+                  class="inline-flex items-center rounded bg-[#99CC33] px-4 py-2 text-sm font-bold text-[#0F171A] hover:bg-[#86B628]"
+                >
+                  Bekijk productspecificaties &amp; foto's →
+                </a>
+                <a
+                  href="#aanvragen"
+                  data-quick-service="rvs-keerklep"
+                  class="wiso-quick-service-link inline-flex items-center rounded border border-white/25 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
+                >
+                  Direct aanvragen
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preventie Tips -->
+        <div class="rounded border border-[#DCE2DE] bg-[#F6F7F5] p-6 sm:p-8 lg:col-span-5">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+            Preventief advies
+          </span>
+          <h2 class="mt-2 font-heading text-2xl font-extrabold text-[#0F171A]">
+            Voorkom onverwachte verstoppingen
+          </h2>
+          <ul class="wiso-square-list mt-4 space-y-2.5 text-sm text-[#172024]">
+            {PREVENTION_TIPS.tips.map((t) => <li>{t.title}</li>)}
+          </ul>
+          <a
+            href="/tips-en-advies"
+            class="mt-5 inline-flex items-center text-sm font-bold text-[#2E5A12] hover:text-[#0F171A]"
+          >
+            Lees alle tips &amp; onderhoudsadviezen →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Werkgebied -->
+  <ServiceAreaLookup bookingHref="#aanvragen" />
+
+  <!-- Direct Aanvraagformulier -->
+  <section id="aanvragen" class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <BookingForm idPrefix="home-booking" />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function initHomeInteractions() {
+    const diagButtons = document.querySelectorAll<HTMLButtonElement>('.wiso-diag-btn');
+    const titleEl = document.getElementById('diag-title');
+    const summaryEl = document.getElementById('diag-summary');
+    const specsEl = document.getElementById('diag-specs');
+    const bookBtn = document.getElementById('diag-book-btn') as HTMLButtonElement | null;
+    const detailLink = document.getElementById('diag-detail-link') as HTMLAnchorElement | null;
+
+    if (diagButtons.length && titleEl && summaryEl && specsEl && bookBtn && detailLink) {
+      diagButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          diagButtons.forEach((other) => {
+            const active = other === btn;
+            other.setAttribute('aria-checked', String(active));
+            other.className = active
+              ? 'wiso-diag-btn flex flex-col items-start rounded border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12] border-[#2E5A12] bg-[#F1F7E4]'
+              : 'wiso-diag-btn flex flex-col items-start rounded border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12] border-[#DCE2DE] bg-[#F6F7F5] hover:border-[#2E5A12]/60 hover:bg-white';
+          });
+
+          titleEl.textContent = btn.dataset.title || '';
+          summaryEl.textContent = btn.dataset.summary || '';
+          specsEl.textContent = btn.dataset.specs || '';
+          bookBtn.dataset.serviceId = btn.dataset.serviceId || 'rioolreiniging';
+          detailLink.href = btn.dataset.href || '/diensten';
+        });
+      });
+
+      bookBtn.addEventListener('click', () => {
+        const serviceId = bookBtn.dataset.serviceId || 'rioolreiniging';
+        window.dispatchEvent(new CustomEvent('wiso:select-service', { detail: { serviceId } }));
+        document.getElementById('aanvragen')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    document.querySelectorAll<HTMLAnchorElement>('.wiso-quick-service-link').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const serviceId = link.dataset.quickService;
+        if (!serviceId) return;
+        const formSection = document.getElementById('aanvragen');
+        if (formSection) {
+          e.preventDefault();
+          window.dispatchEvent(new CustomEvent('wiso:select-service', { detail: { serviceId } }));
+          formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  initHomeInteractions();
+  document.addEventListener('astro:page-load', initHomeInteractions);
+</script>

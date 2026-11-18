@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Astro & Build output
+.astro/
 dist/
 *.tsbuildinfo
 

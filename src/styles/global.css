@@ -2,22 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cross-document view transitions for smooth multi-page Astro navigation (modern-web-guidance: cross-document-transitions) */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
-    color: #2D3134;
-    background-color: #FFFFFF;
+    color: #172024;
+    background-color: #ffffff;
+    scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    text-wrap: balance;
-  }
-
-  main p,
-  main li,
-  .pretty-text {
-    text-wrap: pretty;
   }
 }
 
@@ -30,35 +36,35 @@ dialog:modal {
 dialog::backdrop {
   overflow: hidden;
   overscroll-behavior: contain;
-  background-color: rgba(30, 34, 36, 0.65);
-  backdrop-filter: blur(4px);
+  background-color: rgba(15, 23, 26, 0.65);
+  backdrop-filter: blur(3px);
 }
 
-dialog[open] {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Original WISO square list indicator modernized */
+.wiso-square-list {
+  list-style: none;
+  padding-left: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  dialog[open] {
-    transition:
-      opacity 0.22s ease-out,
-      transform 0.22s ease-out,
-      display 0.22s allow-discrete,
-      overlay 0.22s allow-discrete;
-  }
+.wiso-square-list li {
+  position: relative;
+  padding-left: 1.35rem;
+}
 
-  @starting-style {
-    dialog[open] {
-      opacity: 0;
-      transform: translateY(10px) scale(0.98);
-    }
-  }
+.wiso-square-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  background-color: #99cc33;
+  border: 1px solid #2e5a12;
 }
 
 /* Deferred form validation after interaction (modern-web-guidance: validate-input-after-interaction) */
 .wiso-input:is(:user-invalid, .user-invalid-fallback) {
-  border-color: #d93025;
+  border-color: #c81e1e;
   background-color: #fef2f2;
 }
 
@@ -67,7 +73,7 @@ dialog[open] {
 }
 
 .wiso-input:is(:user-valid, .user-valid-fallback) {
-  border-color: #4D6E0A;
+  border-color: #2e5a12;
 }
 
 .error-msg {
@@ -91,25 +97,4 @@ dialog[open] {
   padding: 0 !important;
   border: 0 !important;
   white-space: nowrap !important;
-}
-
-/* Marquee pause state & reduced-motion opt-in (modern-web-guidance: motion) */
-.marquee-track {
-  animation-play-state: running;
-}
-
-.marquee-paused .marquee-track,
-.group:hover .marquee-pause-on-hover {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-marquee-vertical,
-  .animate-shimmer-slide,
-  .animate-spin-around,
-  .animate-border-beam,
-  .animate-ripple {
-    animation-play-state: paused !important;
-  }
 }

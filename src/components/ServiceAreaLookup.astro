@@ -1,0 +1,199 @@
+---
+import { SERVICE_AREA_CITIES } from '@/data/wisoData';
+
+interface Props {
+  bookingHref?: string;
+}
+
+const { bookingHref = '#aanvragen' } = Astro.props;
+const nlTwente = SERVICE_AREA_CITIES.filter((c) => c.region.startsWith('Twente'));
+const nlAchterhoek = SERVICE_AREA_CITIES.filter((c) => c.region === 'Achterhoek');
+const deBorder = SERVICE_AREA_CITIES.filter((c) => c.country === 'DE');
+---
+
+<section id="werkgebied" class="border-y border-[#DCE2DE] bg-[#F6F7F5] py-16 sm:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+      <!-- Linkerkolom: Plaats-checker & gestructureerd plaatsenoverzicht -->
+      <div class="lg:col-span-7">
+        <span class="inline-block rounded bg-[#F1F7E4] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+          Werkgebied · Regio Oost-Nederland &amp; Grensstreek
+        </span>
+        <h2 class="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A] sm:text-4xl">
+          Dagelijks inzetbaar in Twente, de Achterhoek &amp; Duitse grensstreek
+        </h2>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-[#4B575C]">
+          Vanuit onze vestiging aan de Markslagweg 1 in Haaksbergen (en centraal rond Enschede)
+          rijden onze servicewagens dagelijks voor particulieren en bedrijven in de gehele regio.
+        </p>
+
+        <!-- Semantisch <search> element conform modern-web-guidance -->
+        <search class="mt-6 rounded border border-[#DCE2DE] bg-white p-5 shadow-sm">
+          <form class="wiso-city-search-form flex flex-col gap-3 sm:flex-row sm:items-end">
+            <div class="flex-1">
+              <label for="wiso-city-input" class="block text-sm font-semibold text-[#172024]">
+                Controleer uw woonplaats of gemeente
+              </label>
+              <input
+                id="wiso-city-input"
+                type="search"
+                placeholder="Typ bijv. Enschede, Haaksbergen, Hengelo, Groenlo..."
+                class="mt-1.5 min-h-[46px] w-full rounded border border-[#767676] bg-white px-3.5 py-2 text-base text-[#172024] placeholder:text-[#4B575C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+              />
+            </div>
+            <button
+              type="submit"
+              class="min-h-[46px] rounded bg-[#0F171A] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#1E2629] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+            >
+              Zoek plaats
+            </button>
+          </form>
+
+          <div class="mt-4 flex flex-wrap gap-1.5" id="wiso-city-chips">
+            {
+              SERVICE_AREA_CITIES.map((city) => (
+                <button
+                  type="button"
+                  data-city-name={city.name}
+                  class:list={[
+                    'wiso-city-chip rounded border px-2.5 py-1 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]',
+                    city.name === 'Haaksbergen'
+                      ? 'border-[#2E5A12] bg-[#0F171A] text-[#99CC33]'
+                      : 'border-[#DCE2DE] bg-[#F6F7F5] text-[#172024] hover:border-[#2E5A12] hover:bg-white',
+                  ]}
+                >
+                  {city.name}
+                </button>
+              ))
+            }
+          </div>
+
+          <div class="mt-4 flex flex-col justify-between gap-3 border-t border-[#DCE2DE] pt-4 sm:flex-row sm:items-center">
+            <p class="text-sm font-semibold text-[#172024]">
+              <span class="mr-2 inline-block h-2.5 w-2.5 bg-[#99CC33]" aria-hidden="true"></span>
+              <span id="wiso-city-status">
+                Wiso rijdt dagelijks in Haaksbergen en omstreken
+              </span>
+            </p>
+            <a
+              id="wiso-city-cta"
+              href={bookingHref}
+              class="inline-flex shrink-0 items-center justify-center rounded bg-[#99CC33] px-4 py-2 text-sm font-bold text-[#0F171A] transition-colors hover:bg-[#86B628]"
+            >
+              Aanvragen in Haaksbergen →
+            </a>
+          </div>
+        </search>
+
+        <!-- Regio-overzicht in zakelijke kolommen -->
+        <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded border border-[#DCE2DE] bg-white p-4">
+            <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+              Twente (Overijssel)
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#4B575C]">
+              {nlTwente.map((c) => c.name).join(', ')}
+            </p>
+          </div>
+          <div class="rounded border border-[#DCE2DE] bg-white p-4">
+            <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+              Achterhoek (Gelderland)
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#4B575C]">
+              {nlAchterhoek.map((c) => c.name).join(', ')}
+            </p>
+          </div>
+          <div class="rounded border border-[#DCE2DE] bg-white p-4">
+            <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+              Duitse grensstreek
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#4B575C]">
+              {deBorder.map((c) => c.name).join(', ')}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rechterkolom: Originele werkgebiedkaart scherp op native 350x280 schaal -->
+      <div class="lg:col-span-5">
+        <div class="rounded border border-[#DCE2DE] bg-white p-5 shadow-sm">
+          <div class="flex items-center justify-between border-b border-[#DCE2DE] pb-3">
+            <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#4B575C]">
+              Kaart werkgebied
+            </span>
+            <span class="rounded bg-[#F1F7E4] px-2 py-0.5 font-mono text-[11px] font-bold text-[#2E5A12]">
+              Twente · Achterhoek · DE
+            </span>
+          </div>
+          <div class="mt-4 flex justify-center rounded border border-[#DCE2DE] bg-white p-3">
+            <img
+              src="https://www.wiso.nl/images/kaartje.jpg"
+              alt="Werkgebiedkaart Wiso Allround ontstoppingsbedrijf: Twente, Achterhoek en Duitse grensstreek"
+              width="350"
+              height="280"
+              loading="lazy"
+              class="h-auto w-[350px] max-w-full"
+            />
+          </div>
+          <p class="mt-3 text-xs leading-relaxed text-[#4B575C]">
+            Globaal werkgebied rondom Haaksbergen en Enschede (o.a. langs N18, N35 en A1). Staat uw
+            dorp niet op de kaart? Neem gerust contact op.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initCityLookup() {
+    const input = document.getElementById('wiso-city-input') as HTMLInputElement | null;
+    const form = document.querySelector<HTMLFormElement>('.wiso-city-search-form');
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.wiso-city-chip'));
+    const statusEl = document.getElementById('wiso-city-status');
+    const ctaEl = document.getElementById('wiso-city-cta') as HTMLAnchorElement | null;
+
+    if (!input || !form || chips.length === 0 || !statusEl || !ctaEl) return;
+
+    const selectCity = (cityName: string) => {
+      chips.forEach((chip) => {
+        const isMatch = chip.dataset.cityName === cityName;
+        chip.className = isMatch
+          ? 'wiso-city-chip rounded border px-2.5 py-1 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12] border-[#2E5A12] bg-[#0F171A] text-[#99CC33]'
+          : 'wiso-city-chip rounded border px-2.5 py-1 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12] border-[#DCE2DE] bg-[#F6F7F5] text-[#172024] hover:border-[#2E5A12] hover:bg-white';
+      });
+      statusEl.textContent = `Wiso rijdt dagelijks in ${cityName} en omstreken`;
+      ctaEl.textContent = `Aanvragen in ${cityName} →`;
+      window.dispatchEvent(new CustomEvent('wiso:select-city', { detail: { city: cityName } }));
+    };
+
+    const filterChips = () => {
+      const q = input.value.trim().toLowerCase();
+      let firstVisible: string | null = null;
+      chips.forEach((chip) => {
+        const name = chip.dataset.cityName || '';
+        const visible = !q || name.toLowerCase().includes(q);
+        chip.hidden = !visible;
+        if (visible && !firstVisible) firstVisible = name;
+      });
+      if (q && firstVisible) {
+        selectCity(firstVisible);
+      }
+    };
+
+    input.addEventListener('input', filterChips);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      filterChips();
+    });
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        if (chip.dataset.cityName) selectCity(chip.dataset.cityName);
+      });
+    });
+  }
+
+  initCityLookup();
+  document.addEventListener('astro:page-load', initCityLookup);
+</script>

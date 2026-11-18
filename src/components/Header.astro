@@ -1,0 +1,229 @@
+---
+import { COMPANY_INFO, WISO_SERVICES } from '@/data/wisoData';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home', active: currentPath === '/' },
+  {
+    href: '/diensten',
+    label: 'Diensten',
+    active: currentPath.startsWith('/diensten'),
+    hasDropdown: true,
+  },
+  {
+    href: '/producten',
+    label: 'RVS Keerklep',
+    active: currentPath.startsWith('/producten'),
+  },
+  {
+    href: '/tips-en-advies',
+    label: 'Tips & Advies',
+    active: currentPath.startsWith('/tips-en-advies'),
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+    active: currentPath.startsWith('/contact'),
+  },
+];
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-[#DCE2DE] bg-white">
+  <!-- Top zakelijke zekerhedenbalk -->
+  <div class="border-b border-white/10 bg-[#0F171A] text-white">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/85">
+        <span class="font-medium">
+          <span class="mr-1.5 inline-block h-2 w-2 bg-[#99CC33]" aria-hidden="true"></span>
+          {COMPANY_INFO.street}, {COMPANY_INFO.postalCode} {COMPANY_INFO.city}
+        </span>
+        <span class="hidden text-white/30 md:inline">|</span>
+        <span class="hidden md:inline">Vaste prijsafspraak vooraf · 5 jaar garantie op reparaties</span>
+        <span class="hidden text-white/30 xl:inline">|</span>
+        <span class="hidden xl:inline">Twente, Achterhoek &amp; Grensstreek</span>
+      </div>
+
+      <a
+        href={COMPANY_INFO.phoneHref}
+        class="inline-flex items-center gap-2 font-mono font-bold text-[#99CC33] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#99CC33]"
+      >
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        <span>Bel direct: {COMPANY_INFO.phoneDisplay}</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Subtiele merk-accentlijn geïnspireerd op de originele header -->
+  <div class="h-1 w-full bg-[#99CC33]" aria-hidden="true"></div>
+
+  <!-- Hoofdnavigatie -->
+  <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+    <a
+      href="/"
+      class="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      aria-label="Wiso Allround ontstoppingsbedrijf - Naar homepage"
+    >
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 64 64"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        class="shrink-0"
+      >
+        <rect width="64" height="64" rx="8" fill="#0F171A" />
+        <circle cx="32" cy="32" r="22" stroke="#99CC33" stroke-width="4" />
+        <path
+          d="M32 14C41.94 14 50 22.06 50 32C50 38.8 46.2 44.7 40.6 47.7C43.6 44.3 45 39.3 44 34C42.6 26.6 35.6 22 28.4 23.4C23.2 24.4 19.4 28.9 19 34C18.6 24.1 24.8 14 32 14Z"
+          fill="#99CC33"
+        />
+        <circle cx="32" cy="34" r="4.5" fill="#FFFFFF" />
+      </svg>
+      <span class="flex flex-col leading-none">
+        <span class="font-heading text-xl font-extrabold tracking-tight text-[#0F171A]">
+          WISO
+        </span>
+        <span class="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#2E5A12]">
+          Allround ontstoppingsbedrijf
+        </span>
+      </span>
+    </a>
+
+    <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-0.5 xl:gap-1">
+      {
+        navLinks.map((link) =>
+          link.hasDropdown ? (
+            <div class="group relative shrink-0">
+              <a
+                href={link.href}
+                aria-current={link.active ? 'page' : undefined}
+                class:list={[
+                  'inline-flex items-center gap-1 whitespace-nowrap rounded px-2.5 py-2 text-sm font-semibold transition-colors xl:px-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]',
+                  link.active
+                    ? 'bg-[#F1F7E4] text-[#2E5A12]'
+                    : 'text-[#172024] hover:bg-[#F6F7F5] hover:text-[#2E5A12]',
+                ]}
+              >
+                <span>{link.label}</span>
+                <svg class="h-3.5 w-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <div class="invisible absolute left-0 top-full z-50 w-72 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div class="rounded border border-[#DCE2DE] bg-white p-2 shadow-xl">
+                  <a
+                    href="/diensten"
+                    class="block rounded px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#2E5A12] hover:bg-[#F1F7E4]"
+                  >
+                    Alle 9 diensten overzicht →
+                  </a>
+                  <div class="my-1.5 h-px bg-[#DCE2DE]" />
+                  {WISO_SERVICES.map((service) => (
+                    <a
+                      href={`/diensten/${service.slug}`}
+                      class="flex items-center justify-between rounded px-3 py-2 text-sm font-medium text-[#172024] hover:bg-[#F6F7F5] hover:text-[#2E5A12]"
+                    >
+                      <span>{service.title}</span>
+                      <span class="font-mono text-[11px] text-[#4B575C]">{service.number}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              aria-current={link.active ? 'page' : undefined}
+              class:list={[
+                'shrink-0 whitespace-nowrap rounded px-2.5 py-2 text-sm font-semibold transition-colors xl:px-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]',
+                link.active
+                  ? 'bg-[#F1F7E4] text-[#2E5A12]'
+                  : 'text-[#172024] hover:bg-[#F6F7F5] hover:text-[#2E5A12]',
+              ]}
+            >
+              {link.label}
+            </a>
+          ),
+        )
+      }
+    </nav>
+
+    <div class="hidden sm:flex shrink-0 items-center gap-2">
+      <a
+        href={COMPANY_INFO.phoneHref}
+        class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded border border-[#DCE2DE] bg-[#F6F7F5] px-3 py-2 font-mono text-sm font-bold text-[#0F171A] transition-colors hover:border-[#2E5A12] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+      >
+        <span>{COMPANY_INFO.phoneDisplay}</span>
+      </a>
+      <a
+        href="/contact#aanvragen"
+        class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded bg-[#99CC33] px-3.5 py-2 text-sm font-bold text-[#0F171A] shadow-sm transition-colors hover:bg-[#86B628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F171A]"
+      >
+        <span>Offerte / Afspraak</span>
+      </a>
+    </div>
+
+    <button
+      type="button"
+      id="mobile-menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-menu-panel"
+      aria-label="Menu openen"
+      class="inline-flex h-11 w-11 items-center justify-center rounded border border-[#DCE2DE] text-[#0F171A] lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E5A12]"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobiele navigatielade -->
+  <div id="mobile-menu-panel" hidden class="border-t border-[#DCE2DE] bg-white px-4 pb-5 pt-3 lg:hidden">
+    <nav aria-label="Mobiele navigatie" class="flex flex-col gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          aria-current={link.active ? 'page' : undefined}
+          class:list={[
+            'rounded px-3 py-2.5 text-base font-semibold',
+            link.active ? 'bg-[#F1F7E4] text-[#2E5A12]' : 'text-[#172024] hover:bg-[#F6F7F5]',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="mt-4 flex flex-col gap-2.5 border-t border-[#DCE2DE] pt-4">
+      <a
+        href={COMPANY_INFO.phoneHref}
+        class="inline-flex items-center justify-center gap-2 rounded border border-[#DCE2DE] bg-[#F6F7F5] px-4 py-3 font-mono text-sm font-bold text-[#0F171A]"
+      >
+        <span>Bel direct: {COMPANY_INFO.phoneDisplay}</span>
+      </a>
+      <a
+        href="/contact#aanvragen"
+        class="inline-flex items-center justify-center rounded bg-[#99CC33] px-4 py-3 text-sm font-bold text-[#0F171A]"
+      >
+        Offerte / Afspraak aanvragen
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const panel = document.getElementById('mobile-menu-panel');
+
+  if (toggleBtn && panel) {
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      toggleBtn.setAttribute('aria-label', isOpen ? 'Menu openen' : 'Menu sluiten');
+      panel.hidden = isOpen;
+    });
+  }
+</script>

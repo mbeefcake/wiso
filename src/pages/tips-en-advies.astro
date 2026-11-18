@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { COMPANY_INFO, PREVENTION_TIPS } from '@/data/wisoData';
+---
+
+<BaseLayout
+  title="Tips & Advies | Wiso Allround Ontstoppingsbedrijf"
+  description="Preventieve tips en adviezen van Wiso voor uw afvoer en riolering om onverwachte verstoppingen en kosten te voorkomen."
+>
+  <section class="border-b border-[#DCE2DE] bg-[#F6F7F5] py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Broodkruimelpad" class="text-xs font-medium text-[#4B575C]">
+        <a href="/" class="hover:text-[#2E5A12]">Home</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="font-semibold text-[#0F171A]">Tips &amp; advies</span>
+      </nav>
+
+      <h1 class="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A] sm:text-4xl">
+        Tips &amp; advies voor afvoer en riolering
+      </h1>
+      <p class="mt-3 max-w-3xl text-base leading-relaxed text-[#4B575C] sm:text-lg">
+        {PREVENTION_TIPS.intro}
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-14 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {
+          PREVENTION_TIPS.tips.map((tip) => (
+            <article class="flex flex-col justify-between rounded border border-[#DCE2DE] bg-white p-6">
+              <div>
+                <span class="inline-block rounded bg-[#F1F7E4] px-2.5 py-1 font-mono text-xs font-bold text-[#2E5A12]">
+                  Tip {tip.number}
+                </span>
+                <h2 class="mt-3 font-heading text-xl font-bold text-[#0F171A]">{tip.title}</h2>
+                <p class="mt-2.5 text-sm leading-relaxed text-[#4B575C]">{tip.text}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Praktijkvoorbeeld + koppeling naar onderhoudscontract -->
+      <div class="mt-12 grid grid-cols-1 items-center gap-8 rounded border border-[#DCE2DE] bg-[#F6F7F5] p-6 sm:p-8 lg:grid-cols-12">
+        <div class="flex justify-center lg:col-span-3">
+          <figure class="rounded border border-[#DCE2DE] bg-white p-2.5 shadow-sm">
+            <img
+              src={PREVENTION_TIPS.image.url}
+              alt={PREVENTION_TIPS.image.alt}
+              width={PREVENTION_TIPS.image.width}
+              height={PREVENTION_TIPS.image.height}
+              class="h-[150px] w-[200px] rounded-sm object-cover"
+            />
+            <figcaption class="mt-2 text-center text-xs text-[#4B575C]">
+              Aangetroffen puin en stenen in een rioolbuis
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="lg:col-span-9">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+            Structurele zekerheid
+          </span>
+          <h2 class="mt-2 font-heading text-2xl font-bold text-[#0F171A]">
+            Liever periodieke controle tegen een vaste prijs?
+          </h2>
+          <p class="mt-2 text-base leading-relaxed text-[#4B575C]">
+            De ervaring leert dat met periodiek preventief onderhoud de kans op een verstopping
+            tot een minimum wordt teruggebracht. Zowel bedrijven als particulieren kunnen
+            gebruikmaken van een Wiso onderhoudscontract.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="/diensten/onderhoudscontract"
+              class="inline-flex items-center rounded bg-[#99CC33] px-5 py-2.5 text-sm font-bold text-[#0F171A] hover:bg-[#86B628]"
+            >
+              Bekijk onderhoudscontract →
+            </a>
+            <a
+              href={COMPANY_INFO.phoneHref}
+              class="inline-flex items-center rounded border border-[#0F171A] bg-white px-5 py-2.5 font-mono text-sm font-bold text-[#0F171A] hover:bg-[#0F171A] hover:text-white"
+            >
+              Bel {COMPANY_INFO.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
