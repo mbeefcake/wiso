@@ -1,0 +1,980 @@
+{
+  "source": {
+    "url": "https://www.wiso.nl/",
+    "crawledAt": "2026-11-18",
+    "legacyArchitecture": "HTML4 nested framesets (rows=90,*; cols=160,*), table layout with 1x1 spacer.gif, Dreamweaver MM_nbGroup rollover GIF buttons",
+    "charset": "iso-8859-1",
+    "stylesheetUrl": "https://www.wiso.nl/stylesheet/style_master.css",
+    "missingSystemFiles": [
+      "/robots.txt",
+      "/sitemap.xml",
+      "/wp-sitemap.xml",
+      "/favicon.ico",
+      "/privacy.html",
+      "/voorwaarden.html",
+      "/disclaimer.html"
+    ]
+  },
+  "company": {
+    "name": "Wiso Allround ontstoppingsbedrijf",
+    "alternateName": "Allround ontstoppingsbedrijf Wiso",
+    "address": {
+      "street": "Markslagweg 1",
+      "postalCode": "7481 RE",
+      "city": "Haaksbergen",
+      "country": "Nederland"
+    },
+    "contact": {
+      "phone": "(053) 4356824",
+      "phoneE164": "+31534356824",
+      "email": "robert@hubertmail.nl"
+    },
+    "legal": {
+      "kvk": null,
+      "btw": null,
+      "openingHours": null,
+      "socialMedia": []
+    },
+    "serviceArea": {
+      "centerOnMap": "Enschede",
+      "regions": [
+        "Twente (Overijssel)",
+        "Achterhoek (Gelderland)",
+        "Duitse grensstreek"
+      ],
+      "citiesInsideCircleNL": [
+        "Vriezenveen",
+        "Tubbergen",
+        "Nijverdal",
+        "Wierden",
+        "Almelo",
+        "Denekamp",
+        "Hengelo",
+        "Losser",
+        "Goor",
+        "Enschede",
+        "Lochem",
+        "Haaksbergen",
+        "Neede",
+        "Borculo",
+        "Eibergen",
+        "Groenlo",
+        "Lichtenvoorde"
+      ],
+      "citiesInsideCircleDE": [
+        "Nordhorn",
+        "Bad Bentheim",
+        "Gronau",
+        "Epe",
+        "Heek",
+        "Vreden"
+      ],
+      "citiesOutsideCircle": [
+        "Zelhem",
+        "Metelen",
+        "Legden",
+        "Stadtlohn"
+      ],
+      "visibleRoadsOnMap": [
+        "N35",
+        "N342",
+        "N350",
+        "N344",
+        "N347",
+        "N355",
+        "A1",
+        "N346",
+        "N315",
+        "N18",
+        "A31",
+        "B54"
+      ]
+    },
+    "usps": [
+      "Al 25 jaar actief op het gebied van riool-ontstoppingen en -reparaties (controleer actualiteit bij opdrachtgever)",
+      "Goed opgeleide, vakbekwame medewerkers",
+      "Hypermoderne, geavanceerde apparatuur en gereedschappen",
+      "Kosteloos en vrijblijvend advies en prijsopgave vooraf",
+      "Vaste prijsafspraak zonder bijkomende kosten achteraf",
+      "5 jaar garantie op alle uitgevoerde reparaties en nieuw aangelegde systemen",
+      "Zowel voor particulieren als bedrijven"
+    ]
+  },
+  "designTokens": {
+    "legacyCss": {
+      "colors": {
+        "accentLimeGreen": {
+          "hex": "#99CC33",
+          "rgb": "rgb(153, 204, 51)",
+          "usedIn": [".kop", ".kleingroen", "<li class='kop'>"]
+        },
+        "textGray": {
+          "hex": "#666666",
+          "rgb": "rgb(102, 102, 102)",
+          "usedIn": [".body", ".tussenkop"]
+        },
+        "backgroundWhite": {
+          "hex": "#FFFFFF",
+          "rgb": "rgb(255, 255, 255)",
+          "usedIn": ["body bgcolor"]
+        },
+        "bodyFallbackBlack": {
+          "hex": "#000000",
+          "rgb": "rgb(0, 0, 0)",
+          "usedIn": ["content/prod.html body text attribute (overridden by .body)"]
+        }
+      },
+      "typography": {
+        "body": {
+          "selector": ".body",
+          "fontFamily": "Arial, Helvetica, sans-serif",
+          "fontSize": "13px",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "color": "#666666"
+        },
+        "kop": {
+          "selector": ".kop",
+          "fontFamily": "Verdana, Arial, Helvetica, sans-serif",
+          "fontSize": "12px",
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "color": "#99CC33"
+        },
+        "kleingroen": {
+          "selector": ".kleingroen",
+          "fontFamily": "Verdana, Arial, Helvetica, sans-serif",
+          "fontSize": "9px",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "color": "#99CC33"
+        },
+        "tussenkop": {
+          "selector": ".tussenkop",
+          "fontFamily": "Arial, Helvetica, sans-serif",
+          "fontSize": "11px",
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "color": "#666666"
+        },
+        "listStyle": "square"
+      },
+      "layout": {
+        "topFrameHeight": "90px",
+        "topTableWidth": "740px",
+        "subNavWidth": "160px",
+        "subNavTableWidth": "144px",
+        "contentTableWidth": "500px",
+        "contentLeftSpacer": "50px",
+        "contentTopSpacer": "30px",
+        "borderRadius": "0px",
+        "boxShadow": "none"
+      }
+    },
+    "visualBrandObservations": {
+      "headerMotif": "Lime/apple-green banner with photographic water droplets above a dark grey/charcoal horizontal navigation bar (bg.jpg)",
+      "logoMotif": "White bold sans-serif 'WISO' wordmark with circular dark/white/green drain-swirl/vortex icon",
+      "fleetColor": "Bright lime-green service vans with yellow/white WISO lettering (observed in vetput-busjes.jpg)",
+      "menuIconStyle": "White circular outlines with initial letters (I, D, P, T, C) in green banner; grey/green dot indicators in Diensten subnav"
+    },
+    "recommendedModernTokens": {
+      "colors": {
+        "lime": "#99CC33",
+        "limeLight": "#EAF5D3",
+        "limeHover": "#84B327",
+        "greenTextAccessible": "#4D6E0A",
+        "charcoal": "#4A4D4E",
+        "charcoalDark": "#26292B",
+        "textPrimary": "#2D3134",
+        "textMuted": "#666666",
+        "border": "#E2E6E1",
+        "surface": "#F7F9F5",
+        "white": "#FFFFFF"
+      },
+      "fonts": {
+        "heading": "Plus Jakarta Sans",
+        "body": "Inter"
+      }
+    }
+  },
+  "navigation": {
+    "mainMenu": [
+      {
+        "label": "Introductie",
+        "framesetUrl": "https://www.wiso.nl/submenu/sub_intr.html",
+        "contentUrl": "https://www.wiso.nl/content/intr.html",
+        "recommendedPath": "/",
+        "buttonImages": {
+          "width": 68,
+          "height": 53,
+          "normal": "https://www.wiso.nl/images/intr.gif",
+          "hover": "https://www.wiso.nl/images/intr_f2.gif",
+          "active": "https://www.wiso.nl/images/intr_f3.gif"
+        }
+      },
+      {
+        "label": "Diensten",
+        "framesetUrl": "https://www.wiso.nl/submenu/sub_dienst.html",
+        "contentUrl": "https://www.wiso.nl/content/dienst.html",
+        "recommendedPath": "/diensten",
+        "buttonImages": {
+          "width": 53,
+          "height": 53,
+          "normal": "https://www.wiso.nl/images/dienst.gif",
+          "hover": "https://www.wiso.nl/images/dienst_f2.gif",
+          "active": "https://www.wiso.nl/images/dienst_f3.gif"
+        }
+      },
+      {
+        "label": "Producten",
+        "framesetUrl": "https://www.wiso.nl/submenu/sub_prod.html",
+        "contentUrl": "https://www.wiso.nl/content/prod.html",
+        "recommendedPath": "/producten",
+        "buttonImages": {
+          "width": 62,
+          "height": 53,
+          "normal": "https://www.wiso.nl/images/prod.gif",
+          "hover": "https://www.wiso.nl/images/prod_f2.gif",
+          "active": "https://www.wiso.nl/images/prod_f3.gif"
+        }
+      },
+      {
+        "label": "Tips / Advies",
+        "framesetUrl": "https://www.wiso.nl/submenu/sub_tip.html",
+        "contentUrl": "https://www.wiso.nl/content/tip.html",
+        "recommendedPath": "/tips-en-advies",
+        "buttonImages": {
+          "width": 80,
+          "height": 53,
+          "normal": "https://www.wiso.nl/images/tip.gif",
+          "hover": "https://www.wiso.nl/images/tip_f2.gif",
+          "active": "https://www.wiso.nl/images/tip_f3.gif"
+        }
+      },
+      {
+        "label": "Contact",
+        "framesetUrl": "https://www.wiso.nl/submenu/sub_cont.html",
+        "contentUrl": "https://www.wiso.nl/content/cont.html",
+        "recommendedPath": "/contact",
+        "buttonImages": {
+          "width": 47,
+          "height": 53,
+          "normal": "https://www.wiso.nl/images/cont.gif",
+          "hover": "https://www.wiso.nl/images/cont_f2.gif",
+          "active": "https://www.wiso.nl/images/cont_f3.gif"
+        }
+      }
+    ],
+    "servicesSubMenu": [
+      {
+        "label": "Rioolreiniging en -ontstopping",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_rein.html",
+        "recommendedPath": "/diensten/rioolreiniging-en-ontstopping",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/rein.gif",
+          "hover": "https://www.wiso.nl/images/rein_f2.gif",
+          "active": "https://www.wiso.nl/images/rein_f3.gif"
+        }
+      },
+      {
+        "label": "Rioolreparatie en -aanleg",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_rep.html",
+        "recommendedPath": "/diensten/rioolreparatie-en-aanleg",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/rep.gif",
+          "hover": "https://www.wiso.nl/images/rep_f2.gif",
+          "active": "https://www.wiso.nl/images/rep_f3.gif"
+        }
+      },
+      {
+        "label": "Rioolstank detectie",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_stank.html",
+        "recommendedPath": "/diensten/stankdetectie",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/stank.gif",
+          "hover": "https://www.wiso.nl/images/stank_f2.gif",
+          "active": "https://www.wiso.nl/images/stank_f3.gif"
+        }
+      },
+      {
+        "label": "Riool camera inspectie",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_inspec.html",
+        "recommendedPath": "/diensten/camera-inspectie",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/inspec.gif",
+          "hover": "https://www.wiso.nl/images/inspec_f2.gif",
+          "active": "https://www.wiso.nl/images/inspec_f3.gif"
+        }
+      },
+      {
+        "label": "Onderhoud (contract)",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_onderhoud.html",
+        "recommendedPath": "/diensten/onderhoudscontract",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/onderhoud.gif",
+          "hover": "https://www.wiso.nl/images/onderhoud_f2.gif",
+          "active": "https://www.wiso.nl/images/onderhoud_f3.gif"
+        }
+      },
+      {
+        "label": "Septic tank en vetputonderhoud",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_vetput.html",
+        "recommendedPath": "/diensten/septic-tank-en-vetputonderhoud",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/vetput.gif",
+          "hover": "https://www.wiso.nl/images/vetput_f2.gif",
+          "active": "https://www.wiso.nl/images/vetput_f3.gif"
+        }
+      },
+      {
+        "label": "Dak(goot) reiniging",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_dakgoot.html",
+        "recommendedPath": "/diensten/dakgootreiniging",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/dakgoot.gif",
+          "hover": "https://www.wiso.nl/images/dakgoot_f2.gif",
+          "active": "https://www.wiso.nl/images/dakgoot_f3.gif"
+        }
+      },
+      {
+        "label": "Kruipruimte inspectie",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_kruipruimte.html",
+        "recommendedPath": "/diensten/kruipruimte-inspectie",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/kruipruimte.gif",
+          "hover": "https://www.wiso.nl/images/kruipruimte_f2.gif",
+          "active": "https://www.wiso.nl/images/kruipruimte_f3.gif"
+        }
+      },
+      {
+        "label": "Leidingdetectie",
+        "contentUrl": "https://www.wiso.nl/content/diensten/cont_leiding.html",
+        "recommendedPath": "/diensten/leidingdetectie",
+        "buttonImages": {
+          "width": 102,
+          "height": 20,
+          "normal": "https://www.wiso.nl/images/leiding.gif",
+          "hover": "https://www.wiso.nl/images/leiding_f2.gif",
+          "active": "https://www.wiso.nl/images/leiding_f3.gif"
+        }
+      }
+    ]
+  },
+  "assets": {
+    "brand": {
+      "logo": {
+        "url": "https://www.wiso.nl/images/logo.gif",
+        "width": 117,
+        "height": 49
+      },
+      "headerBackground": {
+        "url": "https://www.wiso.nl/images/bg.jpg",
+        "width": 476,
+        "height": 100
+      },
+      "spacers": [
+        {
+          "url": "https://www.wiso.nl/images/spacer.gif",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "url": "https://www.wiso.nl/images/shim.gif",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    "contentImages": [
+      {
+        "url": "https://www.wiso.nl/images/kaartje.jpg",
+        "width": 350,
+        "height": 280,
+        "alt": "Werkgebied",
+        "pageId": "introductie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/busje.jpg",
+        "width": 200,
+        "height": 132,
+        "alt": "Servicewagen",
+        "pageId": "diensten-overzicht"
+      },
+      {
+        "url": "https://www.wiso.nl/images/vetput-busjes.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "Vetput onderhoud en reiniging",
+        "pageId": "rioolreiniging"
+      },
+      {
+        "url": "https://www.wiso.nl/images/rioolontstop.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "Vetput",
+        "pageId": "rioolreiniging"
+      },
+      {
+        "url": "https://www.wiso.nl/images/rep-aanleg1.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "Oude Gres leiding",
+        "pageId": "rioolreparatie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/rep-aanleg2.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "Moderne PVC rioleringsbuis",
+        "pageId": "rioolreparatie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/rookdetectie.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "stankdetectie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/takinriool.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "camera-inspectie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/steeninriool.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "camera-inspectie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/man.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "onderhoud-contract"
+      },
+      {
+        "url": "https://www.wiso.nl/images/vetput.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "Verzamelput",
+        "pageId": "septic-vetput"
+      },
+      {
+        "url": "https://www.wiso.nl/images/schimmelmuur.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "dakgootreiniging"
+      },
+      {
+        "url": "https://www.wiso.nl/images/dakgoot.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "dakgootreiniging"
+      },
+      {
+        "url": "https://www.wiso.nl/images/kruipruimte.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "kruipruimte-inspectie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/radiodetectie.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "leidingdetectie"
+      },
+      {
+        "url": "https://www.wiso.nl/images/product1.jpg",
+        "width": 200,
+        "height": 181,
+        "alt": "",
+        "pageId": "producten"
+      },
+      {
+        "url": "https://www.wiso.nl/images/keerklep-ratten.jpg",
+        "width": 136,
+        "height": 115,
+        "alt": "Vernielde keerklep",
+        "pageId": "producten"
+      },
+      {
+        "url": "https://www.wiso.nl/images/prod2.jpg",
+        "width": 150,
+        "height": 166,
+        "alt": "Roestvrijstalen keerklep",
+        "pageId": "producten"
+      },
+      {
+        "url": "https://www.wiso.nl/images/steneninriool.jpg",
+        "width": 200,
+        "height": 150,
+        "alt": "",
+        "pageId": "tips-advies"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "introductie",
+      "category": "main",
+      "url": "https://www.wiso.nl/content/intr.html",
+      "framesetUrl": "https://www.wiso.nl/submenu/sub_intr.html",
+      "recommendedPath": "/",
+      "legacyTitle": "Wiso Allround ontstoppingsbedrijf",
+      "heading": "Welkom op de internetsite van Allround ontstoppingsbedrijf Wiso!",
+      "subheadings": [],
+      "paragraphs": [
+        "Allround ontstoppingsbedrijf Wiso is al 25 jaar actief op het gebied van riool-ontstoppingen en -reparaties. Onze goed opgeleide, vakbekwame medewerkers zijn uitgerust met hypermoderne, geavanceerde apparatuur en gereedschappen. Hierdoor kunnen wij uiterst concurrerend en efficiënt werken. Daar plukt u de vruchten van!",
+        "Hier vindt u globaal ons werkgebied:"
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/kaartje.jpg",
+          "width": 350,
+          "height": 280,
+          "alt": "Werkgebied"
+        }
+      ],
+      "notes": [
+        "Verify 'al 25 jaar actief' with client before publishing new site."
+      ]
+    },
+    {
+      "id": "diensten-overzicht",
+      "category": "main",
+      "url": "https://www.wiso.nl/content/dienst.html",
+      "framesetUrl": "https://www.wiso.nl/submenu/sub_dienst.html",
+      "recommendedPath": "/diensten",
+      "legacyTitle": "right",
+      "heading": "Diensten",
+      "subheadings": [],
+      "paragraphs": [
+        "Maak hiernaast uw keuze"
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/busje.jpg",
+          "width": 200,
+          "height": 132,
+          "alt": "Servicewagen"
+        }
+      ],
+      "notes": [
+        "Replace placeholder <title> 'right' and expand overview page with service cards."
+      ]
+    },
+    {
+      "id": "rioolreiniging",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_rein.html",
+      "recommendedPath": "/diensten/rioolreiniging-en-ontstopping",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Rioolreiniging en -onstopping",
+      "subheadings": [],
+      "paragraphs": [
+        "Kernactiviteit van Allround ontstoppingsbedrijf Wiso is het reinigen en ontstoppen van alle afvoeren en riolen. Met onze geavanceerde moderne apparatuur en gereedschappen kunnen wij buizen reinigen en ontstoppen vanaf 32 mm tot en met ca. 250 mm doorsnede. De manier van reinigen of ontstoppen wordt ter plaatse in overleg met de klant bepaald; afhankelijk van de soort verstopping en de specifieke situatie.",
+        "Om op alle mogelijke problemen voorbereid te zijn, herbergen onze servicewagens apparatuur voor werkzaamheden als:"
+      ],
+      "lists": [
+        {
+          "leadIn": null,
+          "items": [
+            "Frezen tot een lengte van circa 50 meter afvoer / riolering",
+            "Reinigen met hoge druk tot een lengte van ca 100 meter afvoer/riolering"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/vetput-busjes.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": "Vetput onderhoud en reiniging"
+        },
+        {
+          "url": "https://www.wiso.nl/images/rioolontstop.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": "Vetput"
+        }
+      ],
+      "notes": [
+        "Fix typo in heading: '-onstopping' -> '-ontstopping'."
+      ]
+    },
+    {
+      "id": "rioolreparatie",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_rep.html",
+      "recommendedPath": "/diensten/rioolreparatie-en-aanleg",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Rioolreparatie en -aanleg",
+      "subheadings": [
+        "Vaste prijsafspraak, 5 jaar garantie"
+      ],
+      "paragraphs": [
+        "Allround ontstoppingsbedrijf Wiso kan alle voorkomende defecten aan riool en/of afvoer vakkundig repareren. Wij geven u vooraf vrijblijvend advies en een prijsopgave. Zo nodig kunnen wij voor u de complete riolering tot aan de gemeente-aansluiting / erfscheiding deskundig vervangen.",
+        "Bij ons geen vervelende bijkomende kosten achteraf. Alle werkzaamheden worden uitgevoerd voor een vaste, van tevoren afgesproken prijs. Uiteraard zijn al onze adviezen en aanbiedingen geheel kosteloos en vrijblijvend. Op alle door ons uitgevoerde reparaties en nieuw aangelegde systemen geven wij 5 jaar garantie."
+      ],
+      "lists": [
+        {
+          "leadIn": "Nadelen van een oude Gres leiding :",
+          "items": [
+            "Bij aansluiting veelal wortel-ingroei",
+            "Lekkage door breuk als gevolg van verzakking en slechte verbindingen"
+          ]
+        },
+        {
+          "leadIn": "Voordelen van een moderne PVC rioleringbuis :",
+          "items": [
+            "Geen lekkage bij de aansluitingen",
+            "Altijd passende aansluitingen voor elke situatie",
+            "Eenvoudig te wijzigen bij aanbouw of verbouw"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/rep-aanleg1.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": "Oude Gres leiding"
+        },
+        {
+          "url": "https://www.wiso.nl/images/rep-aanleg2.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": "Moderne PVC rioleringsbuis"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "stankdetectie",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_stank.html",
+      "recommendedPath": "/diensten/stankdetectie",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Rioolstank-detectie",
+      "subheadings": [],
+      "paragraphs": [
+        "Heeft u last van rioolstank in huis? Dan kunnen wij voor u een stankdetectie uitvoeren volgens een relatief eenvoudige en efficiënte methode. Wij vullen uw afvoersysteem onder lage overdruk met rook. Lekkages in het systeem worden dan meteen zichtbaar."
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/rookdetectie.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "camera-inspectie",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_inspec.html",
+      "recommendedPath": "/diensten/camera-inspectie",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Riool camera-inspectie",
+      "subheadings": [],
+      "paragraphs": [
+        "Met een rioolcamera kunnen wij problemen in uw afvoersysteem lokaliseren en in beeld brengen. Desgewenst krijgt u de onderzoeksresultaten op videoband. Deze methode bespaart u veel graaf- en breekwerk."
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/takinriool.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        },
+        {
+          "url": "https://www.wiso.nl/images/steeninriool.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": [
+        "Modernize legacy reference 'op videoband' in consultation with client."
+      ]
+    },
+    {
+      "id": "onderhoud-contract",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_onderhoud.html",
+      "recommendedPath": "/diensten/onderhoudscontract",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Onderhoud (contract)",
+      "subheadings": [],
+      "paragraphs": [
+        "Wilt u onaangename verrassingen en onverwachte kosten voorkomen? Laat ons dan uw afvoersystemen preventief onderhouden. Uiteraard op contractbasis tegen een vaste, afgesproken afgesproken. Wij komen dan periodiek uw afvoersystemen controleren en eventueel reinigen.",
+        "De ervaring leert dat de kans op een verstopping op deze manier tot een minimum wordt teruggebracht.",
+        "Zowel bedrijven als particulieren kunnen van deze service gebruikmaken. Voor beide typen opdrachtgevers hebben wij een pakket van mogelijkheden, afgestemd op ieders behoefte. Wij zijn graag bereid u over de diverse mogelijkheden te informeren."
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/man.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": [
+        "Fix typo: 'tegen een vaste, afgesproken afgesproken.' -> 'tegen een vaste, afgesproken prijs.'"
+      ]
+    },
+    {
+      "id": "septic-vetput",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_vetput.html",
+      "recommendedPath": "/diensten/septic-tank-en-vetputonderhoud",
+      "legacyTitle": "right",
+      "heading": "Septic tank en vetputonderhoud",
+      "subheadings": [],
+      "paragraphs": [
+        "Ook het leegzuigen en afvoeren van Septic tanks en vetputten behoort tot onze activiteiten. Wij kunnen dit periodiek voor u uitvoeren op basis van vooraf gemaakte afspraken, of op afroep. Het afvoeren gebeurt op een milieuvriendelijke methode."
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/vetput.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": "Verzamelput"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "dakgootreiniging",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_dakgoot.html",
+      "recommendedPath": "/diensten/dakgootreiniging",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Dak(goot)reiniging",
+      "subheadings": [],
+      "paragraphs": [
+        "Het onderhoud van uw dak en dakgoten kan u veel overlast en schade besparen. Want waterschade aan woningen ontstaat in veel gevallen door bladeren en andere rommel op daken en in dakgoten."
+      ],
+      "lists": [
+        {
+          "leadIn": "Veel voorkomende schades zijn:",
+          "items": [
+            "Natte en doorslaande muren(schimmel)",
+            "Lekkage binnen het dakbeschot",
+            "Doorlekkende (platte)daken"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/schimmelmuur.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        },
+        {
+          "url": "https://www.wiso.nl/images/dakgoot.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": [
+        "Fix spacing typos: 'muren(schimmel)' and '(platte)daken'."
+      ]
+    },
+    {
+      "id": "kruipruimte-inspectie",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_kruipruimte.html",
+      "recommendedPath": "/diensten/kruipruimte-inspectie",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Kruipruimte-inspectie",
+      "subheadings": [],
+      "paragraphs": [
+        "Met een kruipruimte-inspectie controleren wij uw kruipruimte op de volgende items:",
+        "Hierdoor kunnen vochtige c.q. natte kruipruimtes worden voorkomen. Dit vermindert de kans op stank en onnodig waterverlies. Bovendien kan ongedierte in uw kruipruimte een bron van ziektes vormen."
+      ],
+      "lists": [
+        {
+          "leadIn": null,
+          "items": [
+            "Ongedierte (ratten, muizen, muggen, enz.)",
+            "Lekkage van de riolering en afvoeren",
+            "Lekkage van waterleidingen en eventueel C.V. leidingen"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/kruipruimte.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "leidingdetectie",
+      "category": "dienst",
+      "url": "https://www.wiso.nl/content/diensten/cont_leiding.html",
+      "recommendedPath": "/diensten/leidingdetectie",
+      "legacyTitle": "Wiso Allround Ontstoppingsbedrijf",
+      "heading": "Leidingdetectie",
+      "subheadings": [],
+      "paragraphs": [
+        "Wij kunnen met geavanceerde apparatuur uw rioolstelsel opnieuw in kaart brengen. Bijvoorbeeld om voor een verbouwing aan te geven of er verborgen leidingen in de grond zitten. Dit kan u achteraf veel onnodig breekwerk besparen. Met dezelfde techniek kunnen wij eventuele verzamelputten, Septic tanks en bezinkputten opsporen.",
+        "Ook kunt u onnodig graafwerk voorkomen."
+      ],
+      "lists": [],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/radiodetectie.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "producten",
+      "category": "main",
+      "url": "https://www.wiso.nl/content/prod.html",
+      "framesetUrl": "https://www.wiso.nl/submenu/sub_prod.html",
+      "recommendedPath": "/producten",
+      "legacyTitle": "Untitled Document",
+      "heading": "Producten",
+      "subheadings": [],
+      "paragraphs": [],
+      "lists": [],
+      "products": [
+        {
+          "artikel": "Roestvrijstalen keerklep",
+          "omschrijving": "Keerklep van duurzaam roestvrijstaal te monteren in ontstoppingsstuk diam. 125 mm ter voorkoming van ratten in de woning via het riool",
+          "prijs": "Op aanvraag",
+          "captions": [
+            "Vervangen van keerkleppen door een gemodificeerd type RVS uitvoering voor bestaande systemen",
+            "Kunststof keerklep vernield door ratten",
+            "Roestvrijstalen keerklep"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/product1.jpg",
+          "width": 200,
+          "height": 181,
+          "alt": ""
+        },
+        {
+          "url": "https://www.wiso.nl/images/keerklep-ratten.jpg",
+          "width": 136,
+          "height": 115,
+          "alt": "Vernielde keerklep"
+        },
+        {
+          "url": "https://www.wiso.nl/images/prod2.jpg",
+          "width": 150,
+          "height": 166,
+          "alt": "Roestvrijstalen keerklep"
+        }
+      ],
+      "notes": [
+        "Replace placeholder <title> 'Untitled Document'."
+      ]
+    },
+    {
+      "id": "tips-advies",
+      "category": "main",
+      "url": "https://www.wiso.nl/content/tip.html",
+      "framesetUrl": "https://www.wiso.nl/submenu/sub_tip.html",
+      "recommendedPath": "/tips-en-advies",
+      "legacyTitle": "right",
+      "heading": "Tips/advies",
+      "subheadings": [],
+      "paragraphs": [
+        "Wij kunnen u van dienst zijn bij alle mogelijke problemen met uw afvoer of riolering. Maar in veel gevallen geldt dat preventieve maatregelen u kunnen behoeden voor onverwachte kosten. Enkele tips en adviezen voor uw afvoer en riolering:"
+      ],
+      "lists": [
+        {
+          "leadIn": null,
+          "items": [
+            "Spoel maandelijks uw keukenafvoer door met heet water en keukensoda ter voorkoming van vetafzetting in de leiding",
+            "Verwijder het toiletblokje tijdens het schoonmaken van de closetpot om te voorkomen dat dit per ongeluk meespoelt",
+            "Laat uw leidingen periodiek reinigen en controleren ter voorkoming van onverwachte verstoppingen en overstromingen"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.wiso.nl/images/steneninriool.jpg",
+          "width": 200,
+          "height": 150,
+          "alt": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "contact",
+      "category": "main",
+      "url": "https://www.wiso.nl/content/cont.html",
+      "framesetUrl": "https://www.wiso.nl/submenu/sub_cont.html",
+      "recommendedPath": "/contact",
+      "legacyTitle": "right",
+      "heading": "Contact",
+      "subheadings": [],
+      "paragraphs": [
+        "Wiso Allround ontstoppingsbedrijf",
+        "Markslagweg 1",
+        "7481 RE Haaksbergen",
+        "Tel: (053) 4356824",
+        "E-mail: robert@hubertmail.nl"
+      ],
+      "lists": [],
+      "links": [
+        {
+          "text": "robert@hubertmail.nl",
+          "href": "mailto:robert@hubertmail.nl"
+        }
+      ],
+      "images": [],
+      "notes": [
+        "No HTML forms exist on the legacy site; add a modern contact/emergency form on rebuild."
+      ]
+    }
+  ]
+}
