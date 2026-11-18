@@ -1,8 +1,9 @@
 # Dependencies
 node_modules/
 
-# Astro & Build output
+# Astro, Vercel & Build output
 .astro/
+.vercel/
 dist/
 *.tsbuildinfo
 

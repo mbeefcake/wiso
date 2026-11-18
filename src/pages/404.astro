@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { COMPANY_INFO } from '@/data/wisoData';
+---
+
+<BaseLayout
+  title="Pagina niet gevonden (404) | Wiso Allround Ontstoppingsbedrijf"
+  description="De opgevraagde pagina kon niet worden gevonden. Bekijk onze diensten of neem direct contact op met Wiso Allround ontstoppingsbedrijf."
+  noindex={true}
+>
+  <section class="bg-[#F6F7F5] py-20 sm:py-28">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+      <span class="inline-block rounded bg-[#F1F7E4] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#2E5A12]">
+        Foutmelding 404
+      </span>
+      <h1 class="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#0F171A] sm:text-5xl">
+        Pagina niet gevonden
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-[#4B575C] sm:text-lg">
+        De pagina die u zoekt bestaat niet of is verplaatst naar een nieuw adres. Ga terug naar
+        de homepage, bekijk onze diensten of bel ons direct voor hulp.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex min-h-[46px] items-center rounded bg-[#99CC33] px-5 py-2.5 text-sm font-bold text-[#0F171A] hover:bg-[#86B628]"
+        >
+          Terug naar homepage
+        </a>
+        <a
+          href="/diensten"
+          class="inline-flex min-h-[46px] items-center rounded border border-[#0F171A] bg-white px-5 py-2.5 text-sm font-bold text-[#0F171A] hover:bg-[#0F171A] hover:text-white"
+        >
+          Alle 9 diensten
+        </a>
+        <a
+          href={COMPANY_INFO.phoneHref}
+          class="inline-flex min-h-[46px] items-center rounded border border-[#DCE2DE] bg-white px-5 py-2.5 font-mono text-sm font-bold text-[#2E5A12] hover:border-[#2E5A12]"
+        >
+          Bel {COMPANY_INFO.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
